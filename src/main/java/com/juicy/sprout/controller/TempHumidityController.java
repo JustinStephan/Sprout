@@ -44,7 +44,7 @@ public class TempHumidityController {
 
             // run the Unix "ps -ef" command
             // using the Runtime exec method:
-            Process p = Runtime.getRuntime().exec("python3 ~/projects/Sprout/PythonScripts/dht2.py");
+            Process p = Runtime.getRuntime().exec("python3 PythonScripts/dht2.py");
 
             BufferedReader stdInput = new BufferedReader(new
                     InputStreamReader(p.getInputStream()));
