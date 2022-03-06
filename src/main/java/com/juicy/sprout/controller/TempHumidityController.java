@@ -16,7 +16,7 @@ public class TempHumidityController {
     @RequestMapping("/temp")
     public void getTemp() throws Exception{
         Runtime rt = Runtime.getRuntime();
-        Process p = rt.exec("python ~/projects/PythonScripts/dht.py");
+        Process p = rt.exec("python ~/projects/PythonScripts/dht1.py");
         BufferedReader bri = new BufferedReader(new InputStreamReader(p.getInputStream()));
         if ((line = bri.readLine()) != null) {
             if (!(line.contains("ERR_CRC") || line.contains("ERR_RNG"))) {
