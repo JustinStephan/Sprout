@@ -33,17 +33,14 @@ try:
 
 	for i in range(0, 32):
 		bit_count = 0
-		print("test1")
 
 		while data[count] == 0:
 			tmp = 1
 			count = count + 1
-			print("test2")
 
 		while data[count] == 1:
 			bit_count = bit_count + 1
 			count = count + 1
-			print("test3")
 
 		if bit_count > 3:
 			if i>=0 and i<8:
@@ -51,7 +48,6 @@ try:
 			if i>=16 and i<24:
 				TemperatureBit = TemperatureBit + "1"
 		else:
-			print("test3")
 			if i>=0 and i<8:
 				HumidityBit = HumidityBit + "0"
 			if i>=16 and i<24:
