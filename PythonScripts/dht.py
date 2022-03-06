@@ -37,11 +37,11 @@ try:
 		while data[count] == 0:
 			tmp = 1
 			count = count + 1
-
+           print("test1")
 		while data[count] == 1:
 			bit_count = bit_count + 1
 			count = count + 1
-
+        print("test2")
 		if bit_count > 3:
 			if i>=0 and i<8:
 				HumidityBit = HumidityBit + "1"
