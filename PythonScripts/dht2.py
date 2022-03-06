@@ -3,7 +3,7 @@ import Adafruit_DHT as dht
 from time import sleep
 
 # Set DATA pin
-DHT = 4
+DHT = 19
 
 #
 # def getTempAndHumid():
