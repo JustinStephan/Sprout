@@ -33,7 +33,8 @@ try:
 
 	for i in range(0, 32):
 		bit_count = 0
-        print("test1")
+		print("test1")
+
 		while data[count] == 0:
 			tmp = 1
 			count = count + 1
