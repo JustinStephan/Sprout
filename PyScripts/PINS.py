@@ -1,0 +1,1 @@
+TEMPHUMID=19
