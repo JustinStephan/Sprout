@@ -55,6 +55,6 @@ public class TempHumidityController {
 
         for (String s : arr){System.out.println(s);}
 
-        return "HUMIDITY: " + arr[0] + "'C | TEMP: " + arr[1] + " %RH" ;
+        return "HUMIDITY: " + arr[0] + "%RH | TEMP: " + arr[1] + " 'C" ;
     }
 }
