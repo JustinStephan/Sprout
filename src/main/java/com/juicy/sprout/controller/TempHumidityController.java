@@ -42,14 +42,19 @@ public class TempHumidityController {
 
     @RequestMapping("/sensor/test")
     public String getTest() throws Exception{
-        return getReading("test");
+        String reading =  getReading("test");
+
+        String[] arr = reading.split(":");
+        return arr[1];
     }
 
     @RequestMapping("/sensor/th")
     public String getTempHumid() throws Exception {
         String reading = getReading("dht");
-        String[] arr = reading.split(" ");
+        String[] arr = reading.split(":");
 
-        return "HUMIDITY: " + arr[0] + "'C | TEMP: " + arr[2] + " %RH" ;
+        for (String s : arr){System.out.println(s);}
+
+        return "HUMIDITY: " + arr[0] + "'C | TEMP: " + arr[3] + " %RH" ;
     }
 }
