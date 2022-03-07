@@ -37,7 +37,7 @@ public class TempHumidityController {
     }
 
     @RequestMapping("/temp2")
-    public void getTempHumid() {
+    public String getTempHumid() {
         String s = null;
 
         System.out.println(":::::::::::::::::::::::::");
@@ -70,5 +70,7 @@ public class TempHumidityController {
             System.out.println("exception happened - here's what I know: ");
             e.printStackTrace();
         }
+
+        return s;
     }
 }
