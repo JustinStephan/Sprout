@@ -40,9 +40,11 @@ public class TempHumidityController {
     public void getTempHumid() {
         String s = null;
 
+        System.out.println(":::::::::::::::::::::::::");
+        System.out.println(":::::::::::::::::::::::::");
         try {
 
-            Process p = Runtime.getRuntime().exec("python3 PyScripts/test.py");
+            Process p = Runtime.getRuntime().exec("python3 PyScripts/dht2.py");
 
             BufferedReader stdInput = new BufferedReader(new
                     InputStreamReader(p.getInputStream()));
@@ -61,6 +63,8 @@ public class TempHumidityController {
             while ((s = stdError.readLine()) != null) {
                 System.out.println(s);
             }
+            System.out.println(":::::::::::::::::::::::::");
+            System.out.println(":::::::::::::::::::::::::");
         }
         catch (IOException e) {
             System.out.println("exception happened - here's what I know: ");
