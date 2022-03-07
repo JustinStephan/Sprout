@@ -14,30 +14,33 @@ public class TempHumidityController {
     static int humidity = 0;
     static int temperature = 0;
 
-    @RequestMapping("/temp")
-    public void getTemp() throws Exception{
+    private String getReading(String readingType) throws Exception {
         Runtime rt = Runtime.getRuntime();
-        Process p = rt.exec("python PyScripts/dht2.py");
+        Process p = rt.exec("python PyScripts/" + readingType + ".py");
         BufferedReader br = new BufferedReader(new
                 InputStreamReader(p.getInputStream()));
         if ((line = br.readLine()) != null) {
             if (!(line.contains("ERR_CRC") || line.contains("ERR_RNG"))) {
-                System.out.println(line);
-//                data = line.split("ABC");
-//                System.out.println(data[0]);
-//                temperature = Integer.parseInt(data[0]);
-//                humidity = Integer.parseInt(data[1]);
-            } else
-                System.out.println("Data Error");
+                return line + " 'C";
+            }
         }
-
         br.close();
         p.waitFor();
-//        System.out.println("Temperature is : " + temperature + " 'C Humidity is :" + humidity + " %RH");
-//        System.out.println("Done.");
+
+        return "Data Error";
     }
 
-    @RequestMapping("/temp2")
+    @RequestMapping("/sensor/temp")
+    public String getTemp() throws Exception{
+        return getReading("temp");
+    }
+
+    @RequestMapping("/sensor/humid")
+    public String getHumid() throws Exception{
+        return getReading("humid");
+    }
+
+    @RequestMapping("/sensor/th")
     public String getTempHumid() {
         String s = null;
 
