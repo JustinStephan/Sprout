@@ -40,6 +40,11 @@ public class TempHumidityController {
         return getReading("humid") + " %RH";
     }
 
+    @RequestMapping("/sensor/test")
+    public String getTest() throws Exception{
+        return getReading("test");
+    }
+
     @RequestMapping("/sensor/th")
     public String getTempHumid() {
         String s = null;
