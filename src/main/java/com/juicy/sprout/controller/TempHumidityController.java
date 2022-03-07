@@ -21,7 +21,7 @@ public class TempHumidityController {
                 InputStreamReader(p.getInputStream()));
         if ((line = br.readLine()) != null) {
             if (!(line.contains("ERR_CRC") || line.contains("ERR_RNG"))) {
-                return line + " 'C";
+                return line;
             }
         }
         br.close();
@@ -32,12 +32,12 @@ public class TempHumidityController {
 
     @RequestMapping("/sensor/temp")
     public String getTemp() throws Exception{
-        return getReading("temp");
+        return getReading("temp") + " 'C";
     }
 
     @RequestMapping("/sensor/humid")
     public String getHumid() throws Exception{
-        return getReading("humid");
+        return getReading("humid") + " %RH";
     }
 
     @RequestMapping("/sensor/th")
