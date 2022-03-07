@@ -50,6 +50,6 @@ public class TempHumidityController {
         String reading = getReading("dht");
         String[] arr = reading.split(" ");
 
-        return "HUMIDITY: " + arr[0] + "'C | TEMP: " + arr[1] + " %RH" + arr.length;
+        return "HUMIDITY: " + arr[0] + "'C | TEMP: " + arr[2] + " %RH" ;
     }
 }
