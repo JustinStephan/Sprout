@@ -49,12 +49,16 @@ public class TempHumidityController {
     }
 
     @RequestMapping("/sensor/th")
-    public String getTempHumid() throws Exception {
+    public String getDigitalHumidTemp() throws Exception {
         String reading = getReading("dht");
         String[] arr = reading.split(":");
 
-        for (String s : arr){System.out.println(s);}
+        for (String s : arr){System.out.print(s);}
 
         return "HUMIDITY: " + arr[0] + "%RH | TEMP: " + arr[1] + " 'C" ;
+    }
+
+    private void sendDigitalHumidTempToDb() {
+
     }
 }
