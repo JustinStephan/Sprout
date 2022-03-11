@@ -3,6 +3,7 @@ package com.juicy.sprout.controller;
 import com.juicy.sprout.repo.Log;
 import com.juicy.sprout.repo.LogRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -69,6 +70,7 @@ public class TempHumidityController {
         return "HUMIDITY: " + arr[0] + "%RH | TEMP: " + arr[1] + " 'C" ;
     }
 
+    @Scheduled(cron = "* * * * *")
     @RequestMapping("/log")
     public void sendDigitalHumidTempToDb() throws Exception {
         String reading = getReading("dht");
