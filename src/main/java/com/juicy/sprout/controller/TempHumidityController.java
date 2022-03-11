@@ -3,6 +3,7 @@ package com.juicy.sprout.controller;
 import com.juicy.sprout.repo.Log;
 import com.juicy.sprout.repo.LogRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,7 @@ import java.io.InputStreamReader;
 import java.util.Date;
 
 @RestController
+@EnableScheduling
 @RequestMapping("/sensor")
 public class TempHumidityController {
 
