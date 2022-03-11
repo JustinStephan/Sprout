@@ -72,7 +72,7 @@ public class TempHumidityController {
         return "HUMIDITY: " + arr[0] + "%RH | TEMP: " + arr[1] + " 'C" ;
     }
 
-    @Scheduled(cron = "* * * * * *")
+    @Scheduled(cron = "* * * * *")
     @RequestMapping("/log")
     public void sendDigitalHumidTempToDb() throws Exception {
         String reading = getReading("dht");
