@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.swing.*;
 
-@RestController
+//@RestController
 public class WebcamController {
 
-    @RequestMapping("/cam")
+//    @RequestMapping("/cam")
     public static void main(String[] args) {
         Webcam webcam = Webcam.getDefault();
         webcam.setViewSize(WebcamResolution.VGA.getSize());
