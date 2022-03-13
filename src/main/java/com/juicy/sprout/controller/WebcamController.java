@@ -3,11 +3,15 @@ package com.juicy.sprout.controller;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.swing.*;
 
+@RestController
 public class WebcamController {
 
+    @RequestMapping("/cam")
     public static void main(String[] args) {
         Webcam webcam = Webcam.getDefault();
         webcam.setViewSize(WebcamResolution.VGA.getSize());
