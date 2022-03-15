@@ -22,8 +22,10 @@ public class WaterController {
             // pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_12,"waterLevel1", PinState.LOW);
             Gpio.pinMode(12, Gpio.INPUT);
 
-            int in = Gpio.digitalRead(12);
-            return "Pin 12 input: " + in;
+            int inD = Gpio.digitalRead(12);
+            int inA = Gpio.analogRead(12);
+
+            return "Pin 12 digital input: " + inD + " | analog input: " + inA;
         }
         return "No value";
     }
