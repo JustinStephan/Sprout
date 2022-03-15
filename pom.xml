@@ -57,21 +57,27 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.sarxos</groupId>
-            <artifactId>webcam-capture</artifactId>
-            <version>0.3.12</version>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv</artifactId>
+            <version>1.5.7</version>
         </dependency>
-        <dependency>
-            <groupId>com.nativelibs4java</groupId>
-            <artifactId>bridj</artifactId>
-            <version>0.6.2</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>dx</artifactId>
-                    <groupId>com.google.android.tools</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+
+        <!--        <dependency>-->
+<!--            <groupId>com.github.sarxos</groupId>-->
+<!--            <artifactId>webcam-capture</artifactId>-->
+<!--            <version>0.3.12</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.nativelibs4java</groupId>-->
+<!--            <artifactId>bridj</artifactId>-->
+<!--            <version>0.6.2</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>dx</artifactId>-->
+<!--                    <groupId>com.google.android.tools</groupId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
     </dependencies>
 
     <repositories>
