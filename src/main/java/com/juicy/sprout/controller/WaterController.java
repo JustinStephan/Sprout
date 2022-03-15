@@ -15,23 +15,27 @@ public class WaterController {
     private static GpioPinDigitalInput pin;
 
     @RequestMapping("/water")
-    public String getWaterLevels() {
+    public void getWaterLevels() {
 
         if (pin == null) {
             GpioController gpio = GpioFactory.getInstance();
             pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_12, "waterLevel1", PinPullResistance.PULL_DOWN);
 //            Gpio.pinMode(12, Gpio.INPUT);
-            if (pin.isHigh()) {
-                return "PIN HIGH";
-            } else {
-                return "PIN LOW";
-            }
-
-//            int inD = Gpio.digitalRead(12);
 //            int inA = Gpio.analogRead(12);
 //
 //            return "Pin 12 digital input: " + inD + " | analog input: " + inA;
         }
-        return "No value";
+        while (true) {
+            System.out.println(pin.toString());
+        }
+//
+//        if (pin.isHigh()) {
+//            return "PIN HIGH";
+//        } else {
+//            return "PIN LOW";
+//        }
+
+//            int inD = Gpio.digitalRead(12);
+        //
     }
 }
