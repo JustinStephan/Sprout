@@ -25,9 +25,8 @@ public class WaterController {
 //
 //            return "Pin 12 digital input: " + inD + " | analog input: " + inA;
         }
-        while (true) {
-            System.out.println(pin.toString());
-        }
+        System.out.println(pin.getState().toString());
+
 //
 //        if (pin.isHigh()) {
 //            return "PIN HIGH";
