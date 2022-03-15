@@ -15,7 +15,7 @@ public class WaterController {
     private static GpioPinDigitalOutput pin;
 
     @RequestMapping("/water")
-    public String toggleLed() {
+    public String getWaterLevels() {
 
         if (pin == null) {
             GpioController gpio = GpioFactory.getInstance();
