@@ -27,8 +27,10 @@ public class LedController {
         pin.toggle();
 
         if(pin.getState().isHigh()){
+            System.out.println("tic");
             return "ON";
         } else {
+            System.out.println("toc");
             return "OFF";
         }
     }
