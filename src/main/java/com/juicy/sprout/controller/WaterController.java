@@ -33,7 +33,7 @@ public class WaterController {
         }
     }
 
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "* * * * * *")
     @RequestMapping("h20")
     public String waterIsWet() {
         return getWaterLevels();
