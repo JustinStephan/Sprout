@@ -1,6 +1,7 @@
 # Libraries
 import Adafruit_DHT as dht
 from time import sleep
+import sys
 
 # Set DATA pin
 pin = sys.argv[1]
