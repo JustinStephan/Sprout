@@ -24,13 +24,14 @@ public class TempHumidityController {
     private LogRepo logRepo;
 
     private static String line;
-    private static String[] data;
+    private static int[] pins = {19};
     static int humidity = 0;
     static int temperature = 0;
 
-    private String getReading(String readingType) throws Exception {
+
+    private String getReading(String readingType, int pin) throws Exception {
         Runtime rt = Runtime.getRuntime();
-        Process p = rt.exec("python PyScripts/" + readingType + ".py");
+        Process p = rt.exec("python PyScripts/" + readingType + ".py " + pin);
         BufferedReader br = new BufferedReader(new
                 InputStreamReader(p.getInputStream()));
         if ((line = br.readLine()) != null) {
@@ -46,36 +47,48 @@ public class TempHumidityController {
 
     @RequestMapping("/temp")
     public String getTemp() throws Exception{
-        return "TEMP: " + getReading("temp") + " 'C";
+        StringBuilder response = new StringBuilder();
+        for (int pin : pins){
+        response.append("TEMP: ").append(getReading("temp", pin)).append(" 'C\n");
+        }
+        return response.toString();
     }
 
     @RequestMapping("/humid")
     public String getHumid() throws Exception{
-        return "HUMIDITY: " + getReading("humid") + " %RH";
+        StringBuilder response = new StringBuilder();
+        for (int pin : pins){
+            response.append("HUMIDITY: ").append(getReading("humid", pin)).append(" %RH");
+        }
+        return response.toString();
     }
 
-    @RequestMapping("/test")
-    public String getTest() throws Exception{
-        String reading =  getReading("test");
-
-        String[] arr = reading.split(":");
-        return arr[1];
+    @RequestMapping("/all")
+    public String getAllDigitalHumidTemp() throws Exception {
+        StringBuilder response = new StringBuilder();
+        int i = 1;
+        for (int pin : pins){
+//        String reading = getReading("dht", 19);
+            response.append("HUMIDITY " + i).append(": ").append(getReading("humid", pin)).append(" %RH\n");
+            response.append("TEMP " + i).append(": ").append(getReading("temp", pin)).append(" 'C\n\n");
+        }
+        return response.toString();
     }
 
     @RequestMapping("/th")
     public String getDigitalHumidTemp() throws Exception {
-        String reading = getReading("dht");
+        String reading = getReading("dht", 19);
         String[] arr = reading.split(":");
 
         for (String s : arr){System.out.print(s + " | ");}
 
-        return "HUMIDITY: " + arr[0] + "%RH | TEMP: " + arr[1] + " 'C" ;
+        return "HUMIDITY: " + arr[0] + "%RH\nTEMP: " + arr[1] + " 'C" ;
     }
 
     @Scheduled(cron = "0 * * * * *")
     @RequestMapping("/log")
     public void sendDigitalHumidTempToDb() throws Exception {
-        String reading = getReading("dht");
+        String reading = getReading("dht", 19);
         String[] arr = reading.split(":");
 
         System.out.println("HUMIDITY: " + arr[0]);
