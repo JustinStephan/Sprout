@@ -15,7 +15,7 @@ public class WaterController {
 
     private static GpioPinDigitalInput pin;
 
-    @RequestMapping("/water")
+    @RequestMapping("/waterLow")
     public String getWaterLevels() {
 
         if (pin == null) {
@@ -33,9 +33,9 @@ public class WaterController {
         }
     }
 
-    @Scheduled(cron = "* * * * * *")
-    @RequestMapping("h20")
-    public String waterIsWet() {
-        return getWaterLevels();
-    }
+//    @Scheduled(cron = "* * * * * *")
+//    @RequestMapping("h20")
+//    public String waterIsWet() {
+//        return getWaterLevels();
+//    }
 }
