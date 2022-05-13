@@ -31,7 +31,9 @@ public class TempHumidityController {
 
     private String getReading(String readingType, int pin) throws Exception {
         Runtime rt = Runtime.getRuntime();
-        Process p = rt.exec("python PyScripts/" + readingType + ".py " + pin);
+        String command = "python PyScripts/" + readingType + ".py " + pin;
+        System.out.println("\n\nSCRIPT EXECUTED: " + command + "\n\n");
+        Process p = rt.exec(command);
         BufferedReader br = new BufferedReader(new
                 InputStreamReader(p.getInputStream()));
         if ((line = br.readLine()) != null) {
@@ -69,8 +71,8 @@ public class TempHumidityController {
         int i = 1;
         for (int pin : pins){
 //        String reading = getReading("dht", 19);
-            response.append("HUMIDITY " + i).append(": ").append(getReading("humid", pin)).append(" %RH,");
-            response.append("TEMP " + i).append(": ").append(getReading("temp", pin)).append(" 'C,");
+            response.append("HUMIDITY ").append(i).append(": ").append(getReading("humid", pin)).append(" %RH,");
+            response.append("TEMP ").append(i).append(": ").append(getReading("temp", pin)).append(" 'C,");
         }
         return response.toString();
     }
