@@ -69,8 +69,8 @@ public class TempHumidityController {
         int i = 1;
         for (int pin : pins){
 //        String reading = getReading("dht", 19);
-            response.append("HUMIDITY " + i).append(": ").append(getReading("humid", pin)).append(" %RH\n");
-            response.append("TEMP " + i).append(": ").append(getReading("temp", pin)).append(" 'C\n\n");
+            response.append("HUMIDITY " + i).append(": ").append(getReading("humid", pin)).append(" %RH,");
+            response.append("TEMP " + i).append(": ").append(getReading("temp", pin)).append(" 'C,");
         }
         return response.toString();
     }
@@ -79,8 +79,8 @@ public class TempHumidityController {
     public String getDigitalHumidTemp() throws Exception {
         String reading = getReading("dht", 19);
         String[] arr = reading.split(":");
-
-        for (String s : arr){System.out.print(s + " | ");}
+        System.out.println("\n\n" + reading + "\n\n");
+       // for (String s : arr){System.out.print(s + " | ");}
 
         return "HUMIDITY: " + arr[0] + "%RH\nTEMP: " + arr[1] + " 'C" ;
     }
